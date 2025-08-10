@@ -1,0 +1,32 @@
+// android/gradle-plugin/godot-pck.gradle (en el paquete)
+def findPck = { ->
+    def root = rootProject.projectDir.parentFile
+    def assetsDir = new File(root, "src/assets")
+    if (assetsDir.exists()) {
+        def files = assetsDir.listFiles({ f -> f.name.endsWith(".pck") } as FileFilter)
+        if (files && files.length > 0) return files[0]
+    }
+    return null
+}
+
+android.applicationVariants.all { variant ->
+    def pck = findPck()
+    def outAssets = file("$projectDir/src/main/assets")
+    def taskName = "copyGodotPckFor${variant.name.capitalize()}"
+    tasks.register(taskName) {
+        doLast {
+            outAssets.mkdirs()
+            if (pck != null) {
+                copy {
+                    from pck
+                    into outAssets
+                    rename { _ -> pck.name } // preserva nombre original
+                }
+                println("[react-native-godot-view] Copiado ${pck.name} → app/src/main/assets")
+            } else {
+                println("[react-native-godot-view] No se encontró *.pck en src/assets")
+            }
+        }
+    }
+    variant.preBuildProvider.configure { dependsOn(tasks.named(taskName)) }
+}
