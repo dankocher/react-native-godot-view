@@ -1,3 +1,4 @@
+import Foundation
 @objc(RNGodotViewManager)
 final class RNGodotViewManager: RCTViewManager {
   override static func requiresMainQueueSetup() -> Bool { true }
