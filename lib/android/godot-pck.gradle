@@ -1,0 +1,29 @@
+def findFirstPck = { ->
+  def appRoot = rootProject.projectDir.parentFile  // raíz de la app (un nivel arriba de /android)
+  def assetsDir = new File(appRoot, "src/assets")
+  if (!assetsDir.exists()) return null
+  def files = assetsDir.listFiles({ f -> f.name.toLowerCase().endsWith(".pck") } as FileFilter)
+  return (files && files.length > 0) ? files.sort { it.name }[0] : null
+}
+
+def outAssetsDir = file("$projectDir/src/main/assets") // assets del AAR de la librería
+
+tasks.register("copyGodotPck") {
+  doLast {
+    outAssetsDir.mkdirs()
+    def pck = findFirstPck()
+    if (pck != null) {
+      project.copy {
+        from pck.parentFile
+        include pck.name
+        into outAssetsDir
+      }
+      println("[react-native-godot-view] Copied ${pck.name} → ${outAssetsDir}")
+    } else {
+      println("[react-native-godot-view] No *.pck found under <app>/src/assets")
+    }
+  }
+}
+
+// En módulos library no hay applicationVariants; engancha al preBuild del módulo
+tasks.named("preBuild").configure { dependsOn("copyGodotPck") }
