@@ -1,0 +1,37 @@
+plugins {
+  id 'com.android.library'
+  id 'org.jetbrains.kotlin.android'
+}
+
+apply from: "$projectDir/godot-pck.gradle"
+
+android {
+  namespace 'com.rngodotview'
+  compileSdk 35
+
+  defaultConfig {
+    minSdk 24 // o alinea con el minSdk de tu app
+    consumerProguardFiles 'consumer-rules.pro'
+  }
+
+  buildFeatures { buildConfig = false }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+  }
+  kotlinOptions {
+    jvmTarget = '17'
+  }
+}
+
+dependencies {
+  // React Native: solo para compilar la lib (la app ya lo trae)
+  compileOnly("com.facebook.react:react-android")
+
+  // Godot: EXPONER al consumidor (la app necesita ver estas clases en compile)
+  api("org.godotengine:godot:4.4.1.stable")
+
+  // AndroidX que tu AAR necesita en runtime (ajusta según uso real)
+  implementation("androidx.fragment:fragment:1.8.2")
+}
