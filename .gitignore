@@ -32,16 +32,16 @@ lib/node_modules
 
 # Example project
 
-/example/.bundle/
-/example/.yarn/
-/example/node_modules/
-/example/android/.gradle/
-/example/android/.kotlin/
-/example/android/build/
-/example/android/app/build/
-/example/godot/.godot/
-/example/android/app/.cxx/
-/example/ios/build/
+example/.bundle/
+example/.yarn/
+example/node_modules/
+example/android/.gradle/
+example/android/.kotlin/
+example/android/build/
+example/android/app/build/
+example/godot/.godot/
+example/android/app/.cxx/
+example/ios/build/
 
 # Xcode
 #
@@ -75,5 +75,5 @@ example/.cxx/
 example/*.keystore
 example/!debug.keystore
 example/.kotlin/
-/example/vendor/
-/example/ios/Pods/
+example/vendor/
+example/ios/Pods/
