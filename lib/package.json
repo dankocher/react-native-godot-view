@@ -1,0 +1,34 @@
+{
+    "name": "react-native-godot-view",
+    "version": "0.1.0",
+    "description": "Embed Godot in a React Native view with an event bridge (Android & iOS).",
+    "main": "src/index.ts",
+    "types": "index.d.ts",
+    "react-native": "src/index.ts",
+    "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "prepare": "npm run build"
+    },
+    "keywords": [
+        "react-native",
+        "godot",
+        "game",
+        "view",
+        "bridge"
+    ],
+    "peerDependencies": {
+        "react": ">=18.0.0",
+        "react-native": ">=0.73.0"
+    },
+    "files": [
+        "android/**/*",
+        "ios/**/*",
+        "dist/**/*",
+        "scripts/**/*",
+        "react-native.config.js",
+        "README.md",
+        "LICENSE",
+        "index.d.ts"
+    ],
+    "license": "MIT"
+}
