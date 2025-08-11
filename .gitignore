@@ -1,8 +1,7 @@
 ### ReactNative template
 # React Native Stack Base
 
-.expo
-__generated__
+.DS_Store
 
 ### Example user template template
 ### Example user template
@@ -19,7 +18,6 @@ logs
 **/*.backup.*
 **/*.back.*
 
-lib/node_modules
 
 *.sublime*
 
@@ -29,3 +27,53 @@ sketch
 
 /.swiftgodot-build/
 /.local-build/
+
+lib/node_modules
+
+# Example project
+
+/example/.bundle/
+/example/.yarn/
+/example/node_modules/
+/example/android/.gradle/
+/example/android/.kotlin/
+/example/android/build/
+/example/android/app/build/
+/example/godot/.godot/
+/example/android/app/.cxx/
+/example/ios/build/
+
+# Xcode
+#
+example/build/
+example/*.pbxuser
+example/!default.pbxuser
+example/*.mode1v3
+example/!default.mode1v3
+example/*.mode2v3
+example/!default.mode2v3
+example/*.perspectivev3
+example/!default.perspectivev3
+example/xcuserdata
+example/*.xccheckout
+example/*.moved-aside
+example/DerivedData
+example/*.hmap
+example/*.ipa
+example/*.xcuserstate
+example/**/.xcode.env.local
+
+# Android/IntelliJ
+#
+example/build/
+example/.idea
+example/.gradle
+example/local.properties
+example/*.iml
+example/*.hprof
+example/.cxx/
+example/*.keystore
+example/!debug.keystore
+example/.kotlin/
+/example/vendor/
+/example/ios/Pods/
