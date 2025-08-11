@@ -19,8 +19,7 @@ logs
 **/*.backup.*
 **/*.back.*
 
-node_modules
-bower_components
+lib/node_modules
 
 *.sublime*
 
@@ -29,3 +28,4 @@ thumb
 sketch
 
 /.swiftgodot-build/
+/.local-build/
